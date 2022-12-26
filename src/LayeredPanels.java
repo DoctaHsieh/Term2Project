@@ -10,7 +10,6 @@ public class LayeredPanels extends JFrame{
 	private static final long serialVersionUID = 1L;
 //Place the components on different panels (different z indexes)
 	public LayeredPanels() {  
-	    super("LayeredPane Example");  
 	    setSize(1200, 650);  
 	    JLayeredPane pane = getLayeredPane();  
 	    //creating buttons  
