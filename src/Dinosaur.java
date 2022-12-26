@@ -8,7 +8,7 @@ public class Dinosaur extends ImgComponent {
 //Create dinosaur image
 	public Dinosaur() {
 		super.setBackground(Color.white);
-		super.setBounds(100, 335, 200, 165);
+		super.setBounds(150, 335, 200, 165);
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
