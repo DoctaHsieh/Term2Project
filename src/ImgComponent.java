@@ -7,8 +7,9 @@ import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
-public class ImgComponent extends JButton {
+public class ImgComponent extends JLabel {
 	private BufferedImage image;
 	protected String imageFilePath = "assets\\images\\";
 
