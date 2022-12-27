@@ -12,10 +12,12 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	Timer timer;
 	private int yVal;
 	private double jumpTime;
+	private boolean airborne;
 	
 	//Create dinosaur image
 	public Dinosaur() {
 		yVal = 335;
+		airborne = false;
 		super.setBounds(150, yVal, 200, 165); //(x, y, width, height) 335 is default y value
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
@@ -24,21 +26,28 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	}
 	
 	public void jump(){
-		super.setLocation(150, 335);
-		jumpTime = 0;
-		timer.start();
+		if (!airborne) {
+			//Dino is not already jumping
+			super.setLocation(150, 335);
+			jumpTime = 0;
+			timer.start();
+		}
 	}
 	
 	//Jump Physics
 	@Override
 	public void actionPerformed(ActionEvent e) {
+			//Dino is airborne
+			airborne = true;
+			
 			/*
 			 * Y-Position of the dino with respect to time can be modeled with the equation:
-			 * y=2000(x-0.375)^2+50
+			 * y = 2000(x-0.375)^2+50
+			 * 
 			 * Y --> y position
 			 * X --> Seconds
 			 * 
-			 * This function updates every .01 seconds
+			 * This function updates every .01 seconds, with the jump lasting 0.75 seconds in total
 			 */
 		
 		 	//Calculate position at given time
@@ -52,6 +61,7 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			
 			//check if jump is complete
 			if (jumpTime >= 0.76) {
+				airborne = false; // dino has landed! no longer airborne
 				timer.stop();
 			}
 			
