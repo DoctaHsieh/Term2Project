@@ -5,9 +5,8 @@ import javax.swing.border.Border;
 public class DinoObstacle extends ImgComponent {
 
 	private static final long serialVersionUID = 1L;
-//Create cactus obstacle
+	//Create cactus obstacle
 	public DinoObstacle() {
-		super.setBackground(Color.white);
 		super.setBounds(800, 335, 151, 165);
 		super.setImgFilePath("assets\\images\\cactus2.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
