@@ -1,34 +1,61 @@
 //This class creates the dinosaur for our game
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.concurrent.TimeUnit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
 
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
-public class Dinosaur extends ImgComponent{
+public class Dinosaur extends ImgComponent implements ActionListener{
 	private static final long serialVersionUID = 1L;
+	Timer timer;
+	private int yVal;
+	private double jumpTime;
+	
 	//Create dinosaur image
 	public Dinosaur() {
-		super.setBounds(150, 335, 200, 165); //(x, y, width, height) 335 is default y value, 95 is apex of jump
+		yVal = 335;
+		super.setBounds(150, yVal, 200, 165); //(x, y, width, height) 335 is default y value
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
+		timer = new Timer(10, this);
 	}
 	
 	public void jump(){
-		//On Ground
-		
-		//Jump up
-		for (int i = 0; i < 15; i++) {
-			try {
-				super.setLocation(150, super.getY()-20);
-			    Thread.sleep(25);
-			} catch (InterruptedException ie) {
-			    Thread.currentThread().interrupt();
-			}
-		}
+		super.setLocation(150, 335);
+		jumpTime = 0;
+		timer.start();
 	}
+	
+	//Jump Physics
+	@Override
+	public void actionPerformed(ActionEvent e) {
+			/*
+			 * Y-Position of the dino with respect to time can be modeled with the equation:
+			 * y=2000(x-0.375)^2+50
+			 * Y --> y position
+			 * X --> Seconds
+			 * 
+			 * This function updates every .01 seconds
+			 */
+		
+		 	//Calculate position at given time
+			double yPos = (jumpTime - 0.375) * (jumpTime - 0.375);
+			yPos *= 2000;
+			yPos += 50;
+			
+			super.setLocation(150, (int) yPos); //Set new location, double rounded to nearest int
+			
+			jumpTime += 0.01;
+			
+			//check if jump is complete
+			if (jumpTime >= 0.76) {
+				timer.stop();
+			}
+			
+	}
+
 }
 
