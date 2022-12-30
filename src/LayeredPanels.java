@@ -6,9 +6,12 @@ import java.awt.event.*;
 
 public class LayeredPanels extends JFrame implements KeyListener{
 	private static final long serialVersionUID = 1L;
+	
+	JLayeredPane pane = getLayeredPane();
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
     DinoObstacle obstacle = new DinoObstacle();  //Load cacti
     DinoBackground background = new DinoBackground();  //Load ground
+    Score score = new Score(); //Load Scoreboard
     
 	//Place the components on different panels (different z indexes)
 	public LayeredPanels() throws InterruptedException {  
@@ -22,18 +25,16 @@ public class LayeredPanels extends JFrame implements KeyListener{
 	}
 	
 	public void loadScene() {
-	    JLayeredPane pane = getLayeredPane();
-	    
 	    //create buttons
 	    pane.add(background, new Integer(1));  
 	    pane.add(obstacle, new Integer(2));  
 	    pane.add(dinosaur, new Integer(2));  
+	    pane.add(score, new Integer(3));
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == 32) {
-			System.out.print("JUMP");
 			dinosaur.jump();
 		}
 	}
