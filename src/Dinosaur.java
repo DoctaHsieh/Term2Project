@@ -10,10 +10,12 @@ import javax.swing.border.Border;
 public class Dinosaur extends ImgComponent implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	Timer timer;
+	DinoObstacle obstacle = new DinoObstacle();
 	private int yVal;
 	private double jumpTime;
 	private boolean airborne;
-	
+
+	Score s = new Score();
 	//Create dinosaur image
 	public Dinosaur() {
 		yVal = 335;
@@ -30,7 +32,7 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			//Dino is not already jumping
 			super.setLocation(150, 335);
 			jumpTime = 0;
-			timer.start();
+			timer.start(); //Jump sequence
 		}
 	}
 	
