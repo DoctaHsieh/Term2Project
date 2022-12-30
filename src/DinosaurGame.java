@@ -10,11 +10,5 @@ public class DinosaurGame{
 		//Create window in which the game takes place
 		LayeredPanels panel = new LayeredPanels();
 		panel.loadScene();
-		
-		
-		//Game Clock
-		while(running) {
-			
-		}
 	}
 }
