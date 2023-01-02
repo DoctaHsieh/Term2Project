@@ -11,17 +11,17 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	Timer timer;
 	DinoObstacle obstacle = new DinoObstacle();
-	private int yVal;
+	private int yVal, xVal;
 	private double jumpTime;
 	private boolean airborne;
-	double yPos = (jumpTime - 0.375) * (jumpTime - 0.375);
 
 	Score s = new Score();
 	//Create dinosaur image
 	public Dinosaur() {
+		xVal = 150;
 		yVal = 335;
 		airborne = false;
-		super.setBounds(150, yVal, 200, 165); //(x, y, width, height) 335 is default y value
+		super.setBounds(xVal, yVal, 200, 165); //(x, y, width, height) 335 is default y value
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
@@ -53,7 +53,7 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			 */
 		
 		 	//Calculate position at given time
-			
+			double yPos = (jumpTime - 0.375) * (jumpTime - 0.375);
 			yPos *= 2000;
 			yPos += 50;
 			
@@ -68,13 +68,7 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			}
 			
 	}
-	public boolean ObstacleCollision(){
-		boolean c = false;
-		if(obstacle.getX() == 150 && yPos == obstacle.getY()){
-			c = true;
-		} 
-		return c;
-	}
+
 
 }
 

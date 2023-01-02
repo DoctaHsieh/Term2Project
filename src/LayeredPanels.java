@@ -51,9 +51,16 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
-		collision = dinosaur.ObstacleCollision();
+		collision = ObstacleCollision();
 	}
-	
+	public boolean ObstacleCollision(){
+		boolean c = false;
+		if(dinosaur.getX() == obstacle.getX() && dinosaur.getY() == obstacle.getY()){
+			c = true;
+			System.out.println(c);
+		} 
+		return c;
+	}
 	
 	
 	// Additional methods from KeyListener interface; not needed

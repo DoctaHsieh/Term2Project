@@ -23,7 +23,7 @@ public class DinoObstacle extends ImgComponent{
 				}
 	}
 	
-	private int randomStartVal() {
+	private int randomStartVal() {  
 		//Return a number between 1200 and 2000
 		double rand = Math.random(); //Random Num 0 - 1
 		int val = (int) ((800 * rand) + 1200);
