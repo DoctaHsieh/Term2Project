@@ -3,12 +3,13 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
+import java.awt.geom.Area;
 
 import java.awt.event.*;
 
 public class LayeredPanels extends JFrame implements KeyListener, ActionListener{
 	private static final long serialVersionUID = 1L;
-	
+	boolean collision = false;
 	JLayeredPane pane = getLayeredPane(); //Window
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
     DinoObstacle obstacle = new DinoObstacle();  //Load cacti
@@ -44,12 +45,16 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			dinosaur.jump();
 		}
 	}
-	
+	public boolean intersects(){
+		Area areaA = new Area(dinosaur.getBounds());
+		Area areaB = new Area(obstacle.getBounds());
+		return areaA.intersects(areaB.getBounds2D());
+	}
 	
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
-		
+		collision = intersects();
 	}
 	
 	
@@ -60,4 +65,3 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	@Override
 	public void keyReleased(KeyEvent e) {}
 }
-
