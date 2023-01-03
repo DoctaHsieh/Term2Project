@@ -11,5 +11,8 @@ public class DinosaurGame{
 		LayeredPanels panel = new LayeredPanels();
 		panel.loadScene();
 		panel.startGame();
+		if (panel.collision == true){
+			System.out.println("game over");
+		}
 	}
 }
