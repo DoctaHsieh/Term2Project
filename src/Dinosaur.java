@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-
+import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 
@@ -11,16 +11,20 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	Timer timer;
 	DinoObstacle obstacle = new DinoObstacle();
-	private int yVal;
+	protected int yVal;
+	private int x, y;
+	private int width = 200;
+	private int height = 165;
 	private double jumpTime;
 	private boolean airborne;
 
 	Score s = new Score();
 	//Create dinosaur image
 	public Dinosaur() {
-		yVal = 335;
+		x =150;
+		y = 335;
 		airborne = false;
-		super.setBounds(150, yVal, 200, 165); //(x, y, width, height) 335 is default y value
+		super.setBounds(x, y, width, height); //(x, y, width, height) 335 is default y value
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
@@ -30,14 +34,13 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	public void jump(){
 		if (!airborne) {
 			//Dino is not already jumping
-			super.setLocation(150, 335);
+			super.setLocation(x, y);
 			jumpTime = 0;
 			timer.start(); //Jump sequence
 		}
 	}
 	
 	//Jump Physics
-	@Override
 	public void actionPerformed(ActionEvent e) {
 			//Dino is airborne
 			airborne = true;
@@ -56,8 +59,8 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			double yPos = (jumpTime - 0.375) * (jumpTime - 0.375);
 			yPos *= 2000;
 			yPos += 50;
-			
-			super.setLocation(150, (int) yPos); //Set new location, double rounded to nearest int
+			y = (int)yPos;
+			super.setLocation(x, y); //Set new location, double rounded to nearest int
 			
 			jumpTime += 0.01;
 			
@@ -67,6 +70,15 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 				timer.stop();
 			}
 			
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
+	public Rectangle getBounds(){
+		return new Rectangle(x,y, width, height);
 	}
 
 }
