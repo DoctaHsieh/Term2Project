@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class GameOverScreen extends JLabel{
+public class GameOverScreen{
 	private boolean clicked;
 	JButton restartButton = new JButton("Continue");
 	JLabel title = new JLabel("Game Over!");
@@ -14,7 +14,7 @@ public class GameOverScreen extends JLabel{
 		clicked = false;
 		
 		//Properties of button
-		restartButton.setBounds(500, 525, 200, 50);
+		restartButton.setBounds(500, 400, 200, 50);
 		restartButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		restartButton.setVisible(false); //Initially
 		restartButton.setFocusable(false);

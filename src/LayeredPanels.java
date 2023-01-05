@@ -13,6 +13,8 @@ public class LayeredPanels extends JFrame implements ActionListener{
     DinoBackground background = new DinoBackground();  //Load ground
     Score score = new Score(); //Load Scoreboard
     GameOverScreen GOScreen = new GameOverScreen();
+    StartScreen start = new StartScreen();
+    
 	boolean scoreThresholdHit = false;
     
     Timer timer = new Timer(10, this); //When started, execute ActionPerformed() method every 0.01 Seconds
@@ -54,10 +56,33 @@ public class LayeredPanels extends JFrame implements ActionListener{
 		pane.add(GOScreen.restartButton, new Integer(7));
 		pane.add(GOScreen.title, new Integer(7));
 		pane.add(GOScreen.score, new Integer(7));
+		pane.add(start.title, new Integer(8));
+		pane.add(start.score, new Integer(8));
+		pane.add(start.play, new Integer(8));
+		pane.add(start.quit, new Integer(8));
+	}
+	 
+	//Display start screen
+	public void startScreen() {
+		//Hide components
+		score.setVisible(false);
+		dinosaur.setVisible(false);
+		obstacle.setVisible(false);
+		
+		start.displayHighScore(score.getHighScore()); //Get high score
+		
+		//Show components
+		start.appear();
+		
+		//Check for play click
+		check.start();
 	}
 
 	public void startGame() {
-		score.setVisible(true); //show score after reset
+		//Load components after start screen
+		score.setVisible(true);
+		dinosaur.setVisible(true);
+		obstacle.setVisible(true);
 		timer.start();
 		dinosaur.reset();
 	}
@@ -121,8 +146,13 @@ public class LayeredPanels extends JFrame implements ActionListener{
 				GOScreen.disappear(); //Get rid of death screen
 				score.resetScore();
 				check.stop();
-				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
+				startScreen();
 				
+			}
+			if(start.checkClicked() == true) {
+				start.disappear();
+				startGame();
+				check.stop();
 			}
 		}
 	});

@@ -20,6 +20,7 @@ public class DinoObstacle extends ImgComponent{
 		super.setImgFilePath("assets\\images\\cactus2.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
+		setVisible(false); //initial
 	}
 	
 	public void move() {

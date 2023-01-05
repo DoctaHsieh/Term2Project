@@ -8,9 +8,11 @@ import javax.swing.SwingConstants;
 public class Score extends JLabel{
 	DinoObstacle obstacle = new DinoObstacle();
 	ArrayList<Integer> scoreData = new ArrayList<Integer>();
-	private int score;
+	private int score, highestScore;
 	public Score() {
 		score = 0;
+		highestScore = 0;
+		setVisible(false); //initial
 		setText("SCORE: " + score);
 		setHorizontalAlignment(SwingConstants.RIGHT); 
 		setBounds(825, 0, 350, 50);
@@ -36,10 +38,17 @@ public class Score extends JLabel{
 	}
 	public void resetScore() {
 		scoreData.add(score);
-		for (int i : scoreData) {
-			System.out.println(i);
+		for (int i = 0;  i < scoreData.size(); i++) {
+			if(score > highestScore) {
+				//Highest Score
+				highestScore = score;
+			}
 		  }
-		score = 0;
+		score = 0; //reset score
 		setText("SCORE: " + score); //Return score to 0
+	}
+	
+	public int getHighScore() {
+		return highestScore;
 	}
 }

@@ -28,6 +28,7 @@ public class Dinosaur extends ImgComponent{
 		super.setImgFilePath("assets\\images\\dino.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
+		setVisible(false); //initial
 	}
 	
 	public void jump() {
