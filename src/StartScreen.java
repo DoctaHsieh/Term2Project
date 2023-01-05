@@ -28,9 +28,9 @@ public class StartScreen{
 		score.setHorizontalAlignment(SwingConstants.CENTER); 
 		
 		//Properties of directions
-		directions.setBounds(300, 150, 600,100);
-		directions.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-		directions.setHorizontalAlignment(SwingConstants.CENTER);
+		directions.setBounds(0, 250, 1200,60);
+		directions.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		directions.setHorizontalAlignment(SwingConstants.CENTER); 
 		
 		//properties of play button
 		play.setBounds(300, 400, 600, 75);
@@ -62,6 +62,7 @@ public class StartScreen{
 	public void disappear() {
 		play.setVisible(false);
 		title.setVisible(false);
+		directions.setVisible(false);
 		score.setVisible(false);
 		quit.setVisible(false);
 		clicked = false;
@@ -70,6 +71,7 @@ public class StartScreen{
 	public void appear() {
 		play.setVisible(true);
 		title.setVisible(true);
+		directions.setvisible(true);
 		score.setVisible(true);
 		quit.setVisible(true);
 	}
