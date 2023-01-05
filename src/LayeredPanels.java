@@ -59,6 +59,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	public void startGame() {
 		score.setVisible(true); //show score after reset
 		timer.start();
+		dinosaur.reset();
 	}
 	
 	//method for when dino passes a cactus
@@ -84,6 +85,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
+		dinosaur.animate();
 		checkCollisions();
 		dinoPasses();
 	}
@@ -97,7 +99,6 @@ public class LayeredPanels extends JFrame implements ActionListener{
 				
 				//stop movement
 				timer.stop();
-				dinosaur.gameOver();
 				
 				//reset positions
 				dinosaur.reset();
