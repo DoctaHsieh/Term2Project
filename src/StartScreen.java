@@ -10,6 +10,7 @@ public class StartScreen{
 	private boolean clicked;
 	JLabel title = new JLabel();
 	JLabel score = new JLabel("High Score: ");
+	JLabel directions = new JLabel("Press the space bar, up arrow, or w key to jump");
 	JButton play = new JButton("Play!");
 	JButton quit = new JButton("Quit");
 	
@@ -25,6 +26,11 @@ public class StartScreen{
 		score.setBounds(0, 200, 1200, 60);
 		score.setFont(new Font("Comic Sans MS", Font.BOLD, 40));
 		score.setHorizontalAlignment(SwingConstants.CENTER); 
+		
+		//Properties of directions
+		directions.setBounds(300, 150, 600,100);
+		directions.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		directions.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		//properties of play button
 		play.setBounds(300, 400, 600, 75);
