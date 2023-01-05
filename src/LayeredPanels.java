@@ -65,16 +65,20 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	public void dinoPasses(){
 		if(obstacle.x <= 150 && obstacle.x >= 141){
 			score.addScore();
+			
+			//Check for lvl up
+			scoreThresholdHit = score.increaseSpeed();
+			if(scoreThresholdHit == true){
+				//Level Up every 10 points
+				obstacle.newSpeed(10+(score.getScore()/5)); //Add 2 to speed every level
+			}
 		}
+		
 	}
 
 	
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
-		scoreThresholdHit = score.increaseSpeed();
-		if(scoreThresholdHit == true){
-			obstacle.newSpeed(10+(score.getScore()/10));
-		}
 		obstacle.move(); //Move obstacles
 		checkCollisions();
 		dinoPasses();
@@ -111,9 +115,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 			if(GOScreen.checkClicked() == true) {
 				GOScreen.disappear(); //Get rid of death screen
 				score.resetScore();
-				
 				check.stop();
-				
 				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
 				
 			}

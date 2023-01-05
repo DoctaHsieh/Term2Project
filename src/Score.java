@@ -25,7 +25,8 @@ public class Score extends JLabel{
 		return score;
 	}
 	public boolean increaseSpeed(){
-		if(score == 10 || score == 20 || score ==30 || score ==40|| score ==50|| score ==60|| score ==70|| score ==80 || score ==90){
+		if((score%10)==0){
+			System.out.print("Lvl Up");
 			return true;
 		}
 		else{
