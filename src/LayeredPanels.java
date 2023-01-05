@@ -7,8 +7,6 @@ import java.awt.event.*;
 
 public class LayeredPanels extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	boolean collision = false;
-	boolean running = true;
 	
 	JLayeredPane pane = getLayeredPane(); //Window
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
@@ -62,29 +60,22 @@ public class LayeredPanels extends JFrame implements ActionListener{
 		score.setVisible(true); //show score after reset
 		timer.start();
 	}
-<<<<<<< Updated upstream
-	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == 32) {
-			//Space key pressed
-			dinosaur.jump();
-		}
-	}
+	
 	//method for when dino passes a cactus
 	public void dinoPasses(){
 		
-		if(obstacle.x <= 150 && obstacle.x >= 141 && collision ==false){
+		if(obstacle.x <= 150 && obstacle.x >= 141){
 			score.addScore();
 		}
 	}
-=======
+
 	
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
 		checkCollisions();
+		dinoPasses();
 	}
-	
->>>>>>> Stashed changes
 	
 	//Check for collisions while game is running
 	public void checkCollisions(){
@@ -92,46 +83,20 @@ public class LayeredPanels extends JFrame implements ActionListener{
 			Rectangle dino = dinosaur.getBounds();
 			if(obst.intersects(dino)){
 				//Collision
-<<<<<<< Updated upstream
-				collision = true;
-				System.out.println("Hit");
-			}
-	}
-	
-	//Game clock, cycles every 0.01 seconds
-	public void actionPerformed(ActionEvent e) {
-		obstacle.move(); //Move obstacles
-		checkCollisions();
-		dinoPasses();
-		
-	}
-	
-	
-	
-	// Additional methods from KeyListener interface; not needed
-	@Override
-	public void keyTyped(KeyEvent e) {}
-	@Override
-	public void keyReleased(KeyEvent e) {}
-=======
-				//End movement
+				
+				//stop movement
 				timer.stop();
 				dinosaur.gameOver();
 				
-				//Show game over screen
+				//reset positions
+				dinosaur.reset();
+				obstacle.reset();
 				score.setVisible(false);
+				
+				//display game over screen
 				GOScreen.finalScore(score.getScore());
 				GOScreen.display();
-			
-				
-				//Reset locations of JLabels
-				obstacle.reset();
-				dinosaur.reset();
-				score.resetScore();
-				
-				//Check when user indicates to continue
 				check.start();
-				
 			}
 	}
 	
@@ -143,9 +108,9 @@ public class LayeredPanels extends JFrame implements ActionListener{
 			if(GOScreen.checkClicked() == true) {
 				GOScreen.disappear(); //Get rid of death screen
 				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
+				score.resetScore();
 				check.stop();
 			}
 		}
 	});
->>>>>>> Stashed changes
 }
