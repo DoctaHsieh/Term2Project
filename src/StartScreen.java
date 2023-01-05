@@ -71,7 +71,7 @@ public class StartScreen{
 	public void appear() {
 		play.setVisible(true);
 		title.setVisible(true);
-		directions.setvisible(true);
+		directions.setVisible(true);
 		score.setVisible(true);
 		quit.setVisible(true);
 	}
