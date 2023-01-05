@@ -1,12 +1,13 @@
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class Score extends JLabel{
 	DinoObstacle obstacle = new DinoObstacle();
+	ArrayList<Integer> scoreData = new ArrayList<Integer>();
 	private int score;
 	public Score() {
 		score = 0;
@@ -34,6 +35,10 @@ public class Score extends JLabel{
 		}
 	}
 	public void resetScore() {
+		scoreData.add(score);
+		for (int i : scoreData) {
+			System.out.println(i);
+		  }
 		score = 0;
 		setText("SCORE: " + score); //Return score to 0
 	}
