@@ -60,6 +60,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 		pane.add(start.score, new Integer(8));
 		pane.add(start.play, new Integer(8));
 		pane.add(start.quit, new Integer(8));
+		pane.add(start.directions, new Integer(8));
 	}
 	 
 	//Display start screen
