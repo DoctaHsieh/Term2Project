@@ -7,7 +7,7 @@ import javax.swing.*;
 public class GameOverScreen extends JLabel{
 	private boolean clicked;
 	JButton restartButton = new JButton("Continue");
-	JLabel title = new JLabel("You Died!");
+	JLabel title = new JLabel("Game Over!");
 	JLabel score = new JLabel();
 	
 	public GameOverScreen() {
@@ -17,6 +17,7 @@ public class GameOverScreen extends JLabel{
 		restartButton.setBounds(500, 525, 200, 50);
 		restartButton.setFont(new Font("Comic Sans MS", Font.BOLD, 15));
 		restartButton.setVisible(false); //Initially
+		restartButton.setFocusable(false);
 		restartButton.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {
 	             //Button clicked

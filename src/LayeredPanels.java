@@ -24,10 +24,10 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	    setTitle("Dino Game"); // set title
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //terminate program when window closes
 	    setVisible(true);
-	    this.addKeyListener(new KeyListener() {
-
+	    addKeyListener(new KeyAdapter() {
 	    	//JUMP
 	    	public void keyPressed(KeyEvent e) {
+	    		System.out.println("Jump");
 	    		if(e.getKeyCode() == 32) {
 	    			//Space key pressed
 	    			dinosaur.jump();
@@ -63,7 +63,6 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	
 	//method for when dino passes a cactus
 	public void dinoPasses(){
-		
 		if(obstacle.x <= 150 && obstacle.x >= 141){
 			score.addScore();
 		}
@@ -111,9 +110,12 @@ public class LayeredPanels extends JFrame implements ActionListener{
 			// Check if button is clicked
 			if(GOScreen.checkClicked() == true) {
 				GOScreen.disappear(); //Get rid of death screen
-				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
 				score.resetScore();
+				
 				check.stop();
+				
+				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
+				
 			}
 		}
 	});
