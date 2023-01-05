@@ -72,6 +72,10 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			
 	}
 	
+	public void gameOver() {
+		timer.stop();
+	}
+	
 	public Rectangle getBounds(){
 		return new Rectangle(x,y, width, height);
 	}

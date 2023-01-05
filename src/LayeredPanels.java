@@ -10,8 +10,6 @@ import java.awt.event.*;
 
 public class LayeredPanels extends JFrame implements KeyListener, ActionListener{
 	private static final long serialVersionUID = 1L;
-	boolean collision = false;
-	boolean running = true;
 	
 	JLayeredPane pane = getLayeredPane(); //Window
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
@@ -42,6 +40,13 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	public void startGame() {
 		timer.start();
 	}
+	
+	//Game clock, cycles every 0.01 seconds
+	public void actionPerformed(ActionEvent e) {
+		obstacle.move(); //Move obstacles
+		checkCollisions();
+	}
+	
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == 32) {
 			//Space key pressed
@@ -56,16 +61,12 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			if(obst.intersects(dino)){
 				//Collision
 				System.out.println("Hit");
+				
+				//End movement
+				timer.stop();
+				dinosaur.gameOver();
 			}
 	}
-	
-	//Game clock, cycles every 0.01 seconds
-	public void actionPerformed(ActionEvent e) {
-		obstacle.move(); //Move obstacles
-		checkCollisions();
-	}
-	
-	
 	
 	// Additional methods from KeyListener interface; not needed
 	@Override
