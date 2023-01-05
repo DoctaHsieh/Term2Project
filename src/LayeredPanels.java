@@ -12,6 +12,7 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	private static final long serialVersionUID = 1L;
 	boolean collision = false;
 	boolean running = true;
+	
 	JLayeredPane pane = getLayeredPane(); //Window
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
     DinoObstacle obstacle = new DinoObstacle();  //Load cacti
@@ -47,19 +48,21 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			dinosaur.jump();
 		}
 	}
+	
+	//Check for collisions while game is running
 	public void checkCollisions(){
-		while(running == true){
 			Rectangle obst = obstacle.getBounds();
 			Rectangle dino = dinosaur.getBounds();
 			if(obst.intersects(dino)){
+				//Collision
 				System.out.println("Hit");
 			}
-		}
 	}
 	
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
+		checkCollisions();
 	}
 	
 	

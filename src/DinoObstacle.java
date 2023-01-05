@@ -4,32 +4,31 @@ import javax.swing.border.Border;
 import java.awt.Rectangle;
 public class DinoObstacle extends ImgComponent{
 	private static final long serialVersionUID = 1L;
-	private int rate; //Number of pixels obstacle will move every 0.01 seconds
-	private int x = 900;
-	private int y = 400;
-	private int width = 91;
-	private int height = 100;
+	private int x, y, width, height, rate;
 
 	//Create cactus obstacle
 	public DinoObstacle() {
-		rate = 10; // Initial speed of obstacles
+		//Initial position of obstacles
+		x = 900;
+		y = 400;
+		width = 91;
+		height = 100;
+		
+		//Initial rate
+		rate = 10;
 		super.setBounds(x, y, width, height); 
 		super.setImgFilePath("assets\\images\\cactus2.png");
 		Border emptyBorder = BorderFactory.createEmptyBorder();
 		super.setBorder(emptyBorder);
 	}
-	public int getX(){
-		return x;
-	}
-	public int getY(){
-		return y;
-	}
+	
 	public void move() {
 		//Move Obstacle at specified rate
-				setLocation(getX() - rate, getY());
-				if (getX() < -90) {
-					setLocation(randomStartVal(), getY()); //Reset to right side of screen
-				}
+			x = x - rate;
+			super.setLocation(x, y);
+			if (x < -90) {
+				x = randomStartVal(); //Reset obstacle to other side of screen
+			}
 	}
 	
 	private int randomStartVal() {
@@ -42,6 +41,7 @@ public class DinoObstacle extends ImgComponent{
 	public void newSpeed(int newSpeed) {
 		rate = newSpeed; // set new rate
 	}
+	
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,width,height);
 	}

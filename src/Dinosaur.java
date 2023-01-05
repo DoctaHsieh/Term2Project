@@ -11,8 +11,8 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	Timer timer;
 	DinoObstacle obstacle = new DinoObstacle();
-	protected int yVal;
-	private int x, y;
+	
+	private int x, y; //Pos of dino
 	private int width = 200;
 	private int height = 165;
 	private double jumpTime;
@@ -71,12 +71,7 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 			}
 			
 	}
-	public int getX(){
-		return x;
-	}
-	public int getY(){
-		return y;
-	}
+	
 	public Rectangle getBounds(){
 		return new Rectangle(x,y, width, height);
 	}
