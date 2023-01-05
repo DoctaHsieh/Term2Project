@@ -41,7 +41,14 @@ public class DinoObstacle extends ImgComponent{
 	public void newSpeed(int newSpeed) {
 		rate = newSpeed; // set new rate
 	}
-
+	
+	public boolean clearedDino() {
+		if (x >= 59 && x <= (59 + rate)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public void reset() {
 		x = 900;

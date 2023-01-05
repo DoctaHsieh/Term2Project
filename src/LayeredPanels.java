@@ -64,7 +64,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	
 	//method for when dino passes a cactus
 	public void dinoPasses(){
-		if(obstacle.x <= 150 && obstacle.x >= 141){
+		if(obstacle.clearedDino()){
 			score.addScore(); //Increase Score by 1
 			int lvl = (score.getScore() / 10) + 1;
 			//Check for lvl up
