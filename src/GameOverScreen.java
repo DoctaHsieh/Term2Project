@@ -57,4 +57,15 @@ public class GameOverScreen extends JLabel{
 		score.setVisible(false);
 		clicked = false;
 	}
+	
+	
+	//Reuse code for messages during the game
+	public void displayMsg(String str) {
+		title.setText(str);
+		title.setVisible(true);
+	}
+	public void eraseMsg() {
+		title.setVisible(false);
+		title.setText("Game Over!");
+	}
 }

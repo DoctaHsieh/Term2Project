@@ -64,16 +64,20 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	//method for when dino passes a cactus
 	public void dinoPasses(){
 		if(obstacle.x <= 150 && obstacle.x >= 141){
-			score.addScore();
-			
+			score.addScore(); //Increase Score by 1
+			int lvl = (score.getScore() / 10) + 1;
 			//Check for lvl up
 			scoreThresholdHit = score.increaseSpeed();
 			if(scoreThresholdHit == true){
 				//Level Up every 10 points
 				obstacle.newSpeed(10+(score.getScore()/5)); //Add 2 to speed every level
+				GOScreen.displayMsg("Level " + lvl); //Reuse game over theme JLAbel Code
+			}
+			if (score.getScore() == ((lvl-1) * 10) + 1) {
+				System.out.print("off");
+				GOScreen.eraseMsg();
 			}
 		}
-		
 	}
 
 	
