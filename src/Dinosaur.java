@@ -76,6 +76,12 @@ public class Dinosaur extends ImgComponent implements ActionListener{
 		timer.stop();
 	}
 	
+	public void reset() {
+		x =150;
+		y = 335;
+		airborne = false;
+		super.setLocation(x, y);
+	}
 	public Rectangle getBounds(){
 		return new Rectangle(x,y, width, height);
 	}

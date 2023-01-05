@@ -42,6 +42,13 @@ public class DinoObstacle extends ImgComponent{
 		rate = newSpeed; // set new rate
 	}
 	
+	public void reset() {
+		x = 900;
+		y = 400;
+		rate = 10;
+		super.setLocation(x, y);
+	}
+	
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,width,height);
 	}

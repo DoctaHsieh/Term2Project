@@ -1,14 +1,11 @@
 //This class places the components on panels
-import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
 import java.awt.Rectangle;
-
-
 import java.awt.event.*;
 
-public class LayeredPanels extends JFrame implements KeyListener, ActionListener{
+public class LayeredPanels extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	boolean collision = false;
 	boolean running = true;
@@ -18,6 +15,7 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
     DinoObstacle obstacle = new DinoObstacle();  //Load cacti
     DinoBackground background = new DinoBackground();  //Load ground
     Score score = new Score(); //Load Scoreboard
+    GameOverScreen GOScreen = new GameOverScreen();
     
     Timer timer = new Timer(10, this); //When started, execute ActionPerformed() method every 0.01 Seconds
     
@@ -28,20 +26,43 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	    setTitle("Dino Game"); // set title
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //terminate program when window closes
 	    setVisible(true);
-	    addKeyListener(this);
+	    this.addKeyListener(new KeyListener() {
+
+	    	//JUMP
+	    	public void keyPressed(KeyEvent e) {
+	    		if(e.getKeyCode() == 32) {
+	    			//Space key pressed
+	    			dinosaur.jump();
+	    		}
+	    	}
+
+	    	// Additional methods from KeyListener interface; not needed
+	    	@Override
+	    	public void keyTyped(KeyEvent e) {}
+	    	@Override
+	    	public void keyReleased(KeyEvent e) {}
+	    	
+	    });
 	}
 	
 	public void loadScene() {
 	    //create buttons
 	    pane.add(background, new Integer(1));  
-	    pane.add(obstacle, new Integer(2)); 
-	    pane.add(dinosaur, new Integer(2));  
-	    pane.add(score, new Integer(3));
+	    pane.add(obstacle, new Integer(3)); 
+	    pane.add(dinosaur, new Integer(4));  
+	    pane.add(score, new Integer(5));
+	    
+	    //Not always visible, but still there
+		pane.add(GOScreen.restartButton, new Integer(7));
+		pane.add(GOScreen.title, new Integer(7));
+		pane.add(GOScreen.score, new Integer(7));
 	}
 
 	public void startGame() {
+		score.setVisible(true); //show score after reset
 		timer.start();
 	}
+<<<<<<< Updated upstream
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == 32) {
 			//Space key pressed
@@ -55,6 +76,15 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			score.addScore();
 		}
 	}
+=======
+	
+	//Game clock, cycles every 0.01 seconds
+	public void actionPerformed(ActionEvent e) {
+		obstacle.move(); //Move obstacles
+		checkCollisions();
+	}
+	
+>>>>>>> Stashed changes
 	
 	//Check for collisions while game is running
 	public void checkCollisions(){
@@ -62,6 +92,7 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			Rectangle dino = dinosaur.getBounds();
 			if(obst.intersects(dino)){
 				//Collision
+<<<<<<< Updated upstream
 				collision = true;
 				System.out.println("Hit");
 			}
@@ -82,4 +113,39 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	public void keyTyped(KeyEvent e) {}
 	@Override
 	public void keyReleased(KeyEvent e) {}
+=======
+				//End movement
+				timer.stop();
+				dinosaur.gameOver();
+				
+				//Show game over screen
+				score.setVisible(false);
+				GOScreen.finalScore(score.getScore());
+				GOScreen.display();
+			
+				
+				//Reset locations of JLabels
+				obstacle.reset();
+				dinosaur.reset();
+				score.resetScore();
+				
+				//Check when user indicates to continue
+				check.start();
+				
+			}
+	}
+	
+	//Check when user indicates to continue
+	Timer check = new Timer(250, new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// Check if button is clicked
+			if(GOScreen.checkClicked() == true) {
+				GOScreen.disappear(); //Get rid of death screen
+				startGame(); //TEMPORARY -- REPLACE WITH START PROMPT
+				check.stop();
+			}
+		}
+	});
+>>>>>>> Stashed changes
 }

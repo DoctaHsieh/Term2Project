@@ -20,6 +20,10 @@ public class Score extends JLabel{
 		setText("SCORE: " + score); //Display new score
 	}
 	
+	public int getScore() {
+		return score;
+	}
+	
 	public void resetScore() {
 		score = 0;
 		setText("SCORE: " + score); //Return score to 0
