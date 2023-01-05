@@ -12,6 +12,6 @@ public class DinosaurGame{
 		panel.running = true;
 		panel.loadScene();
 		panel.startGame();
-		panel.checkCollisions();
+		panel.dinoPasses();
 	}
 }

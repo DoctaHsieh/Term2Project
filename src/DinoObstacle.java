@@ -4,7 +4,7 @@ import javax.swing.border.Border;
 import java.awt.Rectangle;
 public class DinoObstacle extends ImgComponent{
 	private static final long serialVersionUID = 1L;
-	private int x, y, width, height, rate;
+	public int x, y, width, height, rate;
 
 	//Create cactus obstacle
 	public DinoObstacle() {

@@ -48,6 +48,13 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			dinosaur.jump();
 		}
 	}
+	//method for when dino passes a cactus
+	public void dinoPasses(){
+		
+		if(obstacle.x <= 150 && obstacle.x >= 141 && collision ==false){
+			score.addScore();
+		}
+	}
 	
 	//Check for collisions while game is running
 	public void checkCollisions(){
@@ -55,6 +62,7 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 			Rectangle dino = dinosaur.getBounds();
 			if(obst.intersects(dino)){
 				//Collision
+				collision = true;
 				System.out.println("Hit");
 			}
 	}
@@ -63,6 +71,8 @@ public class LayeredPanels extends JFrame implements KeyListener, ActionListener
 	public void actionPerformed(ActionEvent e) {
 		obstacle.move(); //Move obstacles
 		checkCollisions();
+		dinoPasses();
+		
 	}
 	
 	
