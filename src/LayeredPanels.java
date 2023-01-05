@@ -30,7 +30,7 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	    	//JUMP
 	    	public void keyPressed(KeyEvent e) {
 	    		System.out.println("Jump");
-	    		if(e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 119) {
+	    		if(e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 87) {
 	    			//Space key pressed
 	    			dinosaur.jump();
 	    		}
