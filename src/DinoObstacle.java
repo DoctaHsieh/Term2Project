@@ -41,6 +41,7 @@ public class DinoObstacle extends ImgComponent{
 	public void newSpeed(int newSpeed) {
 		rate = newSpeed; // set new rate
 	}
+
 	
 	public void reset() {
 		x = 900;

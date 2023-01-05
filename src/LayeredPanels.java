@@ -7,13 +7,13 @@ import java.awt.event.*;
 
 public class LayeredPanels extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
-	
 	JLayeredPane pane = getLayeredPane(); //Window
 	Dinosaur dinosaur = new Dinosaur(); //Load dino
     DinoObstacle obstacle = new DinoObstacle();  //Load cacti
     DinoBackground background = new DinoBackground();  //Load ground
     Score score = new Score(); //Load Scoreboard
     GameOverScreen GOScreen = new GameOverScreen();
+	boolean scoreThresholdHit = false;
     
     Timer timer = new Timer(10, this); //When started, execute ActionPerformed() method every 0.01 Seconds
     
@@ -72,6 +72,10 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	
 	//Game clock, cycles every 0.01 seconds
 	public void actionPerformed(ActionEvent e) {
+		scoreThresholdHit = score.increaseSpeed();
+		if(scoreThresholdHit == true){
+			obstacle.newSpeed(10+(score.getScore()/10));
+		}
 		obstacle.move(); //Move obstacles
 		checkCollisions();
 		dinoPasses();

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class Score extends JLabel{
+	DinoObstacle obstacle = new DinoObstacle();
 	private int score;
 	public Score() {
 		score = 0;
@@ -23,7 +24,14 @@ public class Score extends JLabel{
 	public int getScore() {
 		return score;
 	}
-	
+	public boolean increaseSpeed(){
+		if(score == 10 || score == 20 || score ==30 || score ==40|| score ==50|| score ==60|| score ==70|| score ==80 || score ==90){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public void resetScore() {
 		score = 0;
 		setText("SCORE: " + score); //Return score to 0
