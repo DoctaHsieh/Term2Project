@@ -1,8 +1,4 @@
 //This class creates the dinosaur for our game
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.Timer;
 import java.awt.Rectangle;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;

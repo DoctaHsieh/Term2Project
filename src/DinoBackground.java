@@ -1,6 +1,4 @@
 //This class creates the ground for our dinosaur game
-import java.awt.Color;
-
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 

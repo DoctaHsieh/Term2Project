@@ -29,7 +29,6 @@ public class LayeredPanels extends JFrame implements ActionListener{
 	    addKeyListener(new KeyAdapter() {
 	    	//JUMP
 	    	public void keyPressed(KeyEvent e) {
-	    		System.out.println("Jump");
 	    		if(e.getKeyCode() == 32 || e.getKeyCode() == 38 || e.getKeyCode() == 87) {
 	    			//Space key pressed
 	    			dinosaur.jump();
@@ -101,7 +100,6 @@ public class LayeredPanels extends JFrame implements ActionListener{
 				GOScreen.displayMsg("Level " + lvl); //Reuse game over theme JLAbel Code
 			}
 			if (score.getScore() == ((lvl-1) * 10) + 1) {
-				System.out.print("off");
 				GOScreen.eraseMsg();
 			}
 		}

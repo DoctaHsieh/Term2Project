@@ -1,5 +1,3 @@
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.JLabel;
@@ -29,7 +27,6 @@ public class Score extends JLabel{
 	}
 	public boolean increaseSpeed(){
 		if((score%10)==0){
-			System.out.print("Lvl Up");
 			return true;
 		}
 		else{
