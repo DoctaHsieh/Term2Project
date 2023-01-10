@@ -15,14 +15,13 @@ public class ImgComponent extends JLabel {
 	public ImgComponent() {
 
 	}
-//Use ImageIO to get image and place it on the button
+//Use ImageIO to get image
 	protected void setImgFilePath(String imageFileName) {
 		try {
-			// you can either use URL or File for reading image using ImageIO
+			// use file path for reading image using ImageIO
 			File imagefile = new File(imageFileName);
-//			System.out.println("image file absolute path is " + imagefile.getAbsolutePath());
-//			System.out.println("Image file exists " + imagefile.exists());
 			image = ImageIO.read(imagefile);
+			// make the image an icon so it can be placed on JLabel
 			Icon icon = new ImageIcon(imageFileName);
 			super.setIcon(icon);
 		} catch (IOException ex) {
