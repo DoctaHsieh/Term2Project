@@ -43,6 +43,7 @@ public class DinoObstacle extends ImgComponent{
 		rate = newSpeed; // set new rate
 	}
 	
+	//Determine whether a collision occurred
 	public boolean clearedDino() {
 		if (x >= 59 && x <= (59 + rate)) {
 			return true;
@@ -51,6 +52,7 @@ public class DinoObstacle extends ImgComponent{
 		}
 	}
 	
+	//Reset location of the dinosaur
 	public void reset() {
 		x = 900;
 		y = 400;
