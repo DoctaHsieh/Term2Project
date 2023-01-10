@@ -17,14 +17,18 @@ public class Score extends JLabel{
 		setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 	}
 	
+	//Increase score by 1
 	public void addScore() {
 		score++;
 		setText("SCORE: " + score); //Display new score
 	}
 	
+	//Return value of score
 	public int getScore() {
 		return score;
 	}
+	
+	//Return true if time for a level up
 	public boolean increaseSpeed(){
 		if((score%10)==0){
 			return true;
@@ -33,6 +37,8 @@ public class Score extends JLabel{
 			return false;
 		}
 	}
+	
+	//reset score to 0, check and record if score was highest score
 	public void resetScore() {
 		scoreData.add(score);
 		for (int i = 0;  i < scoreData.size(); i++) {
@@ -45,6 +51,7 @@ public class Score extends JLabel{
 		setText("SCORE: " + score); //Return score to 0
 	}
 	
+	//return high score
 	public int getHighScore() {
 		return highestScore;
 	}

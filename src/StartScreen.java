@@ -55,10 +55,12 @@ public class StartScreen{
 	       });
 	}
 	
+	//return val of clicked
 	public boolean checkClicked() {
 		return clicked;
 	}
 	
+	//hide all components
 	public void disappear() {
 		play.setVisible(false);
 		title.setVisible(false);
@@ -68,6 +70,7 @@ public class StartScreen{
 		clicked = false;
 	}
 	
+	//show all components
 	public void appear() {
 		play.setVisible(true);
 		title.setVisible(true);
@@ -76,6 +79,7 @@ public class StartScreen{
 		quit.setVisible(true);
 	}
 	
+	//set text to display high score
 	public void displayHighScore(int highScore) {
 		score.setText("High Score: " + highScore);
 	}

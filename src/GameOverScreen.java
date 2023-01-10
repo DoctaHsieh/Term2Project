@@ -38,19 +38,25 @@ public class GameOverScreen{
 		score.setHorizontalAlignment(SwingConstants.CENTER); 
 	}
 	
+	//return val of clicked
 	public boolean checkClicked() {
 		return clicked;
 	}
 	
+	
+	//Display final score
 	public void finalScore(int final_score) {
 		score.setText("Final Score: " + final_score);
 	}
 	
+	//display all components
 	public void display() {
 		restartButton.setVisible(true);
 		title.setVisible(true);
 		score.setVisible(true);
 	}
+	
+	//hide all components
 	public void disappear() {
 		restartButton.setVisible(false);
 		title.setVisible(false);
@@ -64,6 +70,8 @@ public class GameOverScreen{
 		title.setText(str);
 		title.setVisible(true);
 	}
+	
+	//reset to "game over" msg
 	public void eraseMsg() {
 		title.setVisible(false);
 		title.setText("Game Over!");
