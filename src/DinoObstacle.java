@@ -43,7 +43,7 @@ public class DinoObstacle extends ImgComponent{
 		rate = newSpeed; // set new rate
 	}
 	
-	
+	//Determines if a collision occurred
 	public boolean clearedDino() {
 		if (x >= 59 && x <= (59 + rate)) {
 			return true;
