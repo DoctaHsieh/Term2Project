@@ -82,6 +82,7 @@ public class Dinosaur extends ImgComponent{
 		super.setLocation(x, y);
 	}
 	
+	//Determines bounds of dinosaur, used to determine collision
 	public Rectangle getBounds(){
 		return new Rectangle(x,y, width, height);
 	}
