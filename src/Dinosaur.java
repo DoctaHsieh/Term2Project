@@ -73,6 +73,7 @@ public class Dinosaur extends ImgComponent{
 		}
 	}
 	
+	//Reset dinosaur position
 	public void reset() {
 		x =150;
 		y = 335;
@@ -80,6 +81,7 @@ public class Dinosaur extends ImgComponent{
 		initJump = false;
 		super.setLocation(x, y);
 	}
+	
 	public Rectangle getBounds(){
 		return new Rectangle(x,y, width, height);
 	}
