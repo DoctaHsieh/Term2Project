@@ -43,7 +43,7 @@ public class DinoObstacle extends ImgComponent{
 		rate = newSpeed; // set new rate
 	}
 	
-	//Determine whether a collision occurred
+	
 	public boolean clearedDino() {
 		if (x >= 59 && x <= (59 + rate)) {
 			return true;
@@ -60,6 +60,7 @@ public class DinoObstacle extends ImgComponent{
 		super.setLocation(x, y);
 	}
 	
+	//Determine the bounds of the obstacle, used to determine collision
 	public Rectangle getBounds(){
 		return new Rectangle(x,y,width,height);
 	}
